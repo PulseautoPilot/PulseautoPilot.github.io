@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Include howler.js and particles.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -20,7 +15,7 @@
         }
 
         #birthdayCard {
-            background: none;
+            background: linear-gradient(to right, #663399, #cc66cc);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
@@ -41,43 +36,6 @@
             animation: bounce 1s infinite alternate;
         }
 
-        #confettiContainer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .confetti {
-            position: absolute;
-            background-color: #f8d847;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            animation: fall 1s ease-in-out infinite, rotate 3s linear infinite;
-        }
-
-        @keyframes bounce {
-            to {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-
-        @keyframes rotate {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         button {
             background: linear-gradient(to right, #42e695, #3bb2b8);
             color: white;
@@ -85,122 +43,40 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out;
         }
 
         button:hover {
             background: linear-gradient(to right, #45a049, #8cc152);
-            transform: scale(1.05);
         }
 
         button:active {
             transform: scale(0.95);
         }
 
-        .flip-container {
-            perspective: 1000px;
-        }
-
-        .flipper {
-            transition: 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .flipped {
-            transform: rotateY(180deg);
-        }
-
-        .front, .back {
-            backface-visibility: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 10px;
-        }
-
-        .front {
-            z-index: 2;
-        }
-
-        .back {
-            transform: rotateY(180deg);
-            background: none;
+        @keyframes bounce {
+            to {
+                transform: translateY(-10px);
+            }
         }
     </style>
     <title>Birthday Wishing Card</title>
 </head>
 <body>
 
-<div id="birthdayCard" class="flip-container">
-    <div class="flipper">
-        <div class="front">
-            <h1 style="margin-bottom: 10px;">Happy Birthday!</h1>
-            <p>Wishing you a day filled with joy, laughter, and unforgettable moments.</p>
-            <img id="cakeImage" src="https://via.placeholder.com/150" alt="Birthday Cake">
-        </div>
-        <div class="back">
-            <h1 style="margin-bottom: 10px;">🎉 Confetti Time! 🎉</h1>
-            <p>Celebrate this special day with lots of joy and confetti!</p>
-            <div id="confettiContainer"></div>
-        </div>
-    </div>
+<div id="birthdayCard">
+    <h1 style="margin-bottom: 10px;">Happy Birthday!</h1>
+    <p>Wishing you a day filled with joy, laughter, and unforgettable moments.</p>
+    <img id="cakeImage" src="https://via.placeholder.com/150" alt="Birthday Cake">
 </div>
 
-<button onclick="showBirthdayCard()">Open Card</button>
+<button onclick="showBirthdayCard()">Show Birthday Card</button>
 
-<!-- Add the fireworks sound file -->
 <script>
-    var fireworksSound = new Howl({
-        src: ['https://www.soundjay.com/fireworks/sounds/firework-2.mp3']
-    });
-
-    function playFireworksSound() {
-        fireworksSound.play();
-    }
-
     function showBirthdayCard() {
         var birthdayCard = document.getElementById("birthdayCard");
-        birthdayCard.classList.toggle("flipped");
-
-        // Play the fireworks sound
-        playFireworksSound();
-
-        // Create confetti
-        var confettiContainer = document.getElementById("confettiContainer");
-        for (var i = 0; i < 50; i++) {
-            createConfetti(confettiContainer);
-        }
+        birthdayCard.classList.toggle("show");
     }
-
-    function createConfetti(container) {
-        var confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = Math.random() * 100 + "vw";
-        container.appendChild(confetti);
-
-        // Remove confetti element after animation
-        confetti.addEventListener("animationend", function () {
-            container.removeChild(confetti);
-        });
-    }
-</script>
-
-<!-- Particle.js configuration -->
-<script>
-    particlesJS("confettiContainer", {
-        particles: {
-            number: { value: 50 },
-            color: { value: "#f8d847" },
-            shape: { type: "circle" },
-            size: { value: 8 },
-            move: {
-                enable: true,
-                speed: 5
-            }
-        }
-    });
 </script>
 
 </body>
