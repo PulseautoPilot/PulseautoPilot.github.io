@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -12,12 +13,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
 
-        #birthdayCard {
-            background: linear-gradient(to right, #663399, #cc66cc);
+        #portfolioContainer {
+            background: none;
             border-radius: 10px;
-            padding: 20px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             opacity: 0;
@@ -25,58 +26,81 @@
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background 0.5s ease-in-out;
         }
 
-        #birthdayCard.show {
+        #portfolioContainer.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #cakeImage {
+        #portfolioContent {
+            padding: 20px;
+        }
+
+        .portfolioItem {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .portfolioItem:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolioItem img {
             max-width: 100%;
             height: auto;
-            animation: bounce 1s infinite alternate;
+            border-radius: 8px;
         }
 
-        button {
-            background: linear-gradient(to right, #42e695, #3bb2b8);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease-in-out;
+        .openingAnimation {
+            animation: fadeInUp 1s ease-in-out;
         }
 
-        button:hover {
-            background: linear-gradient(to right, #45a049, #8cc152);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        @keyframes bounce {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
             to {
-                transform: translateY(-10px);
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
-    <title>Birthday Wishing Card</title>
+    <title>Portfolio</title>
 </head>
 <body>
 
-<div id="birthdayCard">
-    <h1 style="margin-bottom: 10px;">Happy Birthday!</h1>
-    <p>Wishing you a day filled with joy, laughter, and unforgettable moments.</p>
-    <img id="cakeImage" src="https://www.freepik.com/free-photo/up-close-look-wild-brown-burro-field_21489529.htm#query=donkey&position=1&from_view=keyword&track=sph&uuid=1bd56074-3d35-4a90-8b42-47a492dacfde" alt="Birthday Cake">
+<div id="portfolioContainer" class="openingAnimation">
+    <div id="portfolioContent">
+        <h1>My Portfolio</h1>
+        <p>Welcome to my portfolio! Explore some of my work below:</p>
+
+        <div class="portfolioItem">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
+            <h3>Project 1</h3>
+            <p>Description of Project 1.</p>
+        </div>
+
+        <div class="portfolioItem">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
+            <h3>Project 2</h3>
+            <p>Description of Project 2.</p>
+        </div>
+
+        <!-- Add more portfolio items as needed -->
+
+    </div>
 </div>
 
-<button onclick="showBirthdayCard()">Show Birthday Card</button>
-
 <script>
-    function showBirthdayCard() {
-        var birthdayCard = document.getElementById("birthdayCard");
-        birthdayCard.classList.toggle("show");
-    }
+    // Adding a small delay to the opening animation for better visibility
+    setTimeout(function () {
+        document.getElementById("portfolioContainer").classList.add("show");
+    }, 500);
 </script>
 
 </body>
