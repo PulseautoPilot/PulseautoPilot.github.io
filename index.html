@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #3494e6, #ec6ead);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,14 +15,14 @@
         }
 
         #birthdayCard {
-            background-color: #ffd700;
+            background: linear-gradient(to right, #663399, #cc66cc);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background 0.5s ease-in-out;
         }
 
         #birthdayCard.show {
@@ -37,17 +37,21 @@
         }
 
         button {
-            background-color: #4caf50;
+            background: linear-gradient(to right, #42e695, #3bb2b8);
             color: white;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out;
         }
 
         button:hover {
-            background-color: #45a049;
+            background: linear-gradient(to right, #45a049, #8cc152);
+        }
+
+        button:active {
+            transform: scale(0.95);
         }
 
         @keyframes bounce {
