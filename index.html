@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #birthdayCard {
+            background-color: #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        #birthdayCard.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #cakeImage {
+            max-width: 100%;
+            height: auto;
+            animation: bounce 1s infinite alternate;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes bounce {
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+    <title>Birthday Wishing Card</title>
+</head>
+<body>
+
+<div id="birthdayCard">
+    <h1 style="margin-bottom: 10px;">Happy Birthday!</h1>
+    <p>Wishing you a day filled with joy, laughter, and unforgettable moments.</p>
+    <img id="cakeImage" src="https://via.placeholder.com/150" alt="Birthday Cake">
+</div>
+
+<button onclick="showBirthdayCard()">Show Birthday Card</button>
+
+<script>
+    function showBirthdayCard() {
+        var birthdayCard = document.getElementById("birthdayCard");
+        birthdayCard.classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>
