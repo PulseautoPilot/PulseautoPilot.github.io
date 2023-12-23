@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Include howler.js and particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -145,10 +150,22 @@
 
 <button onclick="showBirthdayCard()">Open Card</button>
 
+<!-- Add the fireworks sound file -->
 <script>
+    var fireworksSound = new Howl({
+        src: ['https://www.soundjay.com/fireworks/sounds/firework-2.mp3']
+    });
+
+    function playFireworksSound() {
+        fireworksSound.play();
+    }
+
     function showBirthdayCard() {
         var birthdayCard = document.getElementById("birthdayCard");
         birthdayCard.classList.toggle("flipped");
+
+        // Play the fireworks sound
+        playFireworksSound();
 
         // Create confetti
         var confettiContainer = document.getElementById("confettiContainer");
@@ -168,6 +185,22 @@
             container.removeChild(confetti);
         });
     }
+</script>
+
+<!-- Particle.js configuration -->
+<script>
+    particlesJS("confettiContainer", {
+        particles: {
+            number: { value: 50 },
+            color: { value: "#f8d847" },
+            shape: { type: "circle" },
+            size: { value: 8 },
+            move: {
+                enable: true,
+                speed: 5
+            }
+        }
+    });
 </script>
 
 </body>
